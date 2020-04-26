@@ -15,6 +15,8 @@ export class ElaraSpinner extends LitElement {
         :host {
           height: auto;
           width: auto;
+          cursor: default;
+          pointer-events: none;
         }
 
         .container {
@@ -38,9 +40,11 @@ export class ElaraSpinner extends LitElement {
           margin-top: -5px;
           animation: ellipsis steps(3, end) 1.8s infinite;
           overflow: hidden;
+          user-select: none;
         }
 
         .text {
+          user-select: none;
           color: var(--elara-font-color);
           justify-self: flex-end;
           font-size: 1.5em;
