@@ -1,11 +1,5 @@
 import { pulseWith } from './animations';
 
-export interface Root extends HTMLElement {
-    loadables: ReadonlyArray<string>;
-    links: ReadonlyArray<{name: string; route: string}>;
-    menu(isHide: boolean): Promise<void>;
-    show(route: string): Promise<void>;
-}
 export interface UpdatableElement extends HTMLElement {
     requestUpdate(name?: PropertyKey, oldValue?: unknown): Promise<unknown>;
 }
