@@ -51,6 +51,7 @@ export class ElaraImage extends LitElement {
 
             this._handle = null;
             if(!this.querySelector('elara-spinner')){
+                // wait a little time before showing spinner, if image is loaded before 300ms, it will be not seen.
                 this._handle = setTimeout(() => {
                     const spinner = document.createElement('elara-spinner');
                     spinner.text = this.placeholder;
