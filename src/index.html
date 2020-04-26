@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>X Project</title>
+
+    <base href="/">
+
+    <style>
+    .material-icons {
+      font-family: 'Material Icons';
+      font-weight: normal;
+      font-style: normal;
+      font-size: 24px;
+      line-height: 1;
+      letter-spacing: normal;
+      text-transform: none;
+      display: inline-block;
+      white-space: nowrap;
+      word-wrap: normal;
+      direction: ltr;
+      -webkit-font-feature-settings: 'liga';
+      -webkit-font-smoothing: antialiased;
+    }
+
+    :root {
+      --elara-darkgray: #2f2f2f;
+      --elara-lightgray: #f2f2f2;
+      --elara-background-color: #f2f2f2;
+      --elara-font-color: #2f2f2f;
+      --elara-font-hover: rgb(0, 0, 0, 0.3);
+      --elara-link: #2f2f2f;
+      --elara-primary: #525252;
+      --elara-secondary: #0b7282;
+      --elara-cta: #e8e8d4;
+      --elara-color: #ffffff;
+      --elara-input-container: #6b6b6b;
+      --elara-input-focus: #3f4a50;
+      --elara-loader-background: rgba(255, 255, 255, 0.8);
+      --elara-light-background: rgba(255, 255, 255, 0.9);
+      --elara-highlight: #f2f2f2;
+      --aside-size: 250px;
+      --elara-font-primary: 'Hind', sans-serif;
+      --elara-font-display: 'Questrial', serif;
+      --box-elevation-1: 0 2px 1px -1px rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 1px 3px 0 rgba(0,0,0,.12); /* 1dp */
+      --box-elevation-2: 0 3px 3px -2px rgba(0,0,0,.2), 0 3px 4px 0 rgba(0,0,0,.14), 0 1px 8px 0 rgba(0,0,0,.12); /* 3dp */
+    }
+
+    * {
+      -webkit-user-select: text;
+      -moz-user-select: text;
+      -ms-user-select: text; 
+    }
+
+    ::selection {
+      background: #FFEB3B; /* WebKit/Blink Browsers */
+    }
+    ::-moz-selection {
+      background: #FFEB3B; /* Gecko Browsers */
+    }
+
+    a {
+      text-decoration: none;
+      color: var(--elara-primary);
+      cursor: pointer;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: var(--elara-background-color);
+      font-family: var(--elara-font-primary);
+      font-size: 16px;
+      height: 100vh;
+      width: 100vw;
+      overflow-x: hidden;
+    }
+
+    .handler {
+      position: fixed;
+      top: 0;
+      right: 0;
+      left: 0;
+      bottom: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 999;
+      background-color: rgba(0, 0, 0, 0.8);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      visibility: visible;
+      opacity: 1;
+      transition: opacity 1s;
+      user-select: none;
+      text-align: center;
+    }
+
+    .handler.hidden {
+      visibility: hidden;
+      opacity: 0;
+    }
+
+    .spinner {
+      width: 50px;
+      height: 50px;
+      position: relative;
+      margin: 0 auto;
+    }
+
+    .spinner:before, .spinner:after {
+      content: "";
+      display: block;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      border: 1px dotted #fff;
+      opacity: 0.6;
+      position: absolute;
+      top: 0;
+      left: 0;
+      animation: bounce 2s linear infinite;
+    }
+
+    .spinner:after {
+      animation-delay: -1s;
+    }
+
+    @keyframes bounce {
+      0% {
+        transform: scale(0);
+      }
+      20% {
+        transform: scale(1);
+      }
+      40% {
+        transform: scale(1.5);
+      }
+      60% {
+        transform: scale(2);
+        opacity: 0.5;
+      }
+      80% {
+        transform: scale(2.5);
+        opacity: 0.25;
+      }
+      100% {
+        transform: scale(3);
+        opacity: 0;
+      }
+    }
+
+    .content.hidden {
+      opacity: 0;
+      z-index: 0;
+      visibility: hidden;
+    }
+
+    @media (prefers-color-scheme: dark){
+      body {
+        --elara-background-color: #373737;
+        --elara-font-color: #f0f0f0;
+        --elara-font-hover: rgb(255, 255, 255, 0.3);
+      }
+    }
+
+    @media (prefers-color-scheme: light){
+      body {
+        --elara-background-color: #f2f2f2;
+        --elara-font-color: #2f2f2f;
+        --elara-font-hover: rgb(0, 0, 0, 0.3);
+      }
+    }
+    </style>
+    <noscript>JavaScript is needed to use this website.</noscript>
+    <script src="./boot.js"></script>
+    <script src="./vendor/webcomponents-loader.js" defer></script>
+    <script src="./vendor/web-animations-next-lite.min.js" defer></script>
+    <script src="./vendor/custom-elements-es5-adapter.js" defer></script>
+  </head>
+  <body>
+    <elara-app></elara-app>
+  </body>
+  <style>
+    @font-face {
+        font-family: 'Material Icons';
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: url('./assets/fonts/material.woff2') format('woff2');
+      }
+  </style>
+</html>
