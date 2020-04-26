@@ -1,4 +1,4 @@
-![Elara logo](./docs/elara.svg | width=300)
+<img src="./docs/elara.svg" width="400" alt="Logo" />
 
 # Skeleton
 
