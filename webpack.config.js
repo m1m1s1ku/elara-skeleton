@@ -16,10 +16,12 @@ const webcomponentsjs = './node_modules/@webcomponents/webcomponentsjs';
 const webanimationsjs = './node_modules/web-animations-js';
 
 const assets = [
+  /*
   {
     from: resolve('./src/assets'),
     to: resolve('dist/assets/')
   }
+  */
 ];
 
 const polyfills = [
@@ -45,16 +47,6 @@ const polyfills = [
   },
   {
     from: resolve('./src/robots.txt'),
-    to: OUTPUT_PATH,
-    flatten: true
-  },
-  {
-    from: resolve('./CNAME'),
-    to: OUTPUT_PATH,
-    flatten: true
-  },
-  {
-    from: resolve('./src/favicon.ico'),
     to: OUTPUT_PATH,
     flatten: true
   },
