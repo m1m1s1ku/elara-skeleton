@@ -10,6 +10,13 @@ import { load, Router, bootstrap } from '../elara';
  * @extends {LitElement}
  */
 export default abstract class Root extends LitElement {
+	/**
+	 * A really simple router
+	 * 
+	 * Could (or should) be replaced by Crayon (https://github.com/alshdavid/crayon) depending on usage
+	 *
+	 * @memberof Root
+	 */
 	public router = Router();
 
 	@property({reflect: true, type: String})
@@ -18,6 +25,13 @@ export default abstract class Root extends LitElement {
 	@query('#content')
 	protected _content: HTMLDivElement;
 
+	/**
+	 * Inside JS dark-mode handling
+	 *
+	 * Could be used for SVG animations, example : (https://github.com/Ghostfly/cheno-website/blob/master/src/elara-app.ts#L109)
+	 * @private
+	 * @memberof Root
+	 */
 	private _queries = {
 		DARK: '(prefers-color-scheme: dark)',
 		LIGHT: '(prefers-color-scheme: light)',
@@ -25,9 +39,17 @@ export default abstract class Root extends LitElement {
 
 	private _onHashChangeListener: () => void;
 
+	// Global loader control
 	public abstract get loadables(): string[];
+	// Inside app-component. (light-dom !)
 	public abstract render(): TemplateResult;
 
+	/**
+	 * Used by boot.js to make a real app-loader
+	 *
+	 * @readonly
+	 * @memberof Root
+	 */
 	public get bootstrap(){
 		return bootstrap(this.loadables, this);
 	}
@@ -46,13 +68,9 @@ export default abstract class Root extends LitElement {
 	public connectedCallback(){
 		super.connectedCallback();
 
-		if(window.matchMedia(this._queries.DARK).matches){
-			document.body.classList.add('night');
-		}
+		if(window.matchMedia(this._queries.DARK).matches){ document.body.classList.add('night'); }
 
-		if(window.matchMedia(this._queries.LIGHT).matches){
-			document.body.classList.add('day');
-		}
+		if(window.matchMedia(this._queries.LIGHT).matches){ document.body.classList.add('day'); }
 
 		this._onHashChangeListener = this._onHashChange.bind(this);
 		window.addEventListener('hashchange', this._onHashChangeListener, { passive: true });
@@ -68,7 +86,7 @@ export default abstract class Root extends LitElement {
 	}
 
 	/**
-	 * Togglee dark|light (lightswitch)
+	 * Toggle dark|light (lightswitch)
 	 *
 	 * @returns
 	 * @memberof Root

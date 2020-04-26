@@ -9,9 +9,7 @@ export class ElaraApp extends Root {
 	public static readonly is: string = 'elara-app';
 
 	public get loadables(){
-		return [
-			// note: on every app part thus the only loadable
-		];
+		return [];
 	}
 
 	public render() {

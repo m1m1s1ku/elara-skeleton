@@ -1,6 +1,13 @@
 import { LitElement, property, customElement, html, query, PropertyValues } from 'lit-element';
 import { fadeWith } from '../core/animations';
 
+/**
+ * Simple <iron-image> replace using <elara-spinner>
+ *
+ * @export
+ * @class ElaraImage
+ * @extends {LitElement}
+ */
 @customElement('elara-image')
 export class ElaraImage extends LitElement {
     @property({type: String, reflect: true})
@@ -10,9 +17,6 @@ export class ElaraImage extends LitElement {
     public alt: string;
 
     @property({type: String, reflect: true})
-    public sizing: 'cover' | 'contain' = 'contain';
-
-    @property({type: String, reflect: true})
     public placeholder = 'Loading';
 
     private _listener: (ev: Event) => void;   
@@ -20,10 +24,24 @@ export class ElaraImage extends LitElement {
 
     @query('.elara-image') private _img!: HTMLImageElement;
 
+    /**
+     * Styling should be made by the user of <elara-image>
+     *
+     * @protected
+     * @returns
+     * @memberof ElaraImage
+     */
     protected createRenderRoot(){
         return this;
     }
 
+    /**
+     * Done that way to avoid spinner seen twice on slow 3G
+     *
+     * @protected
+     * @param {PropertyValues} _changedProperties
+     * @memberof ElaraImage
+     */
     protected update(_changedProperties: PropertyValues){
         super.update(_changedProperties);
         if(_changedProperties.has('src')){
@@ -71,7 +89,7 @@ export class ElaraImage extends LitElement {
     }
 
 	public render() {
-        return html`<img class="elara-image" .src=${this.src} .alt="${this.alt}" .sizing="${this.sizing}" />`;
+        return html`<img class="elara-image" .src=${this.src} .alt="${this.alt}" />`;
     }
 }
 
