@@ -40,8 +40,12 @@ export default abstract class Root extends LitElement {
 	private _onHashChangeListener: () => void;
 
 	// Global loader control
+	// Needed for "progressive" app load
+	public abstract get needed(): string[];
+	// Async components
 	public abstract get loadables(): string[];
-	// Inside app-component. (light-dom !)
+
+	// Inside HTML app-component. (light-dom for easy styling!)
 	public abstract render(): TemplateResult;
 
 	/**
@@ -70,9 +74,7 @@ export default abstract class Root extends LitElement {
 		window.removeEventListener('hashchange', this._onHashChangeListener);
 	}
 	
-	protected createRenderRoot(){
-		return this;
-	}
+	protected createRenderRoot(){ return this; }
 
 	/**
 	 * Toggle dark|light (lightswitch)

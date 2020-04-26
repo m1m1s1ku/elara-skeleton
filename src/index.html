@@ -19,21 +19,11 @@
       --box-elevation-2: 0 3px 3px -2px rgba(0,0,0,.2), 0 3px 4px 0 rgba(0,0,0,.14), 0 1px 8px 0 rgba(0,0,0,.12); /* 3dp */
     }
 
-    * {
-      -webkit-user-select: text;
-      -moz-user-select: text;
-      -ms-user-select: text; 
-    }
+    * { -webkit-user-select: text; -moz-user-select: text; -ms-user-select: text;  }
 
-    ::selection, ::-moz-selection {
-      background: #002FA7;
-    }
+    ::selection, ::-moz-selection { background: #002FA7; }
 
-    a {
-      text-decoration: none;
-      color: var(--elara-primary);
-      cursor: pointer;
-    }
+    a { text-decoration: none; color: var(--elara-primary); cursor: pointer; }
 
     body {
       margin: 0;
@@ -46,7 +36,7 @@
       overflow-x: hidden;
     }
 
-    .handler {
+    body > .loader {
       position: fixed;
       top: 0;
       right: 0;
@@ -66,20 +56,11 @@
       user-select: none;
       text-align: center;
     }
-
-    .handler.hidden {
-      visibility: hidden;
-      opacity: 0;
-    }
-
-    .spinner {
-      width: 50px;
-      height: 50px;
-      position: relative;
-      margin: 0 auto;
-    }
-
-    .spinner:before, .spinner:after {
+    
+    body > .loader.hidden { visibility: hidden; opacity: 0; }
+    body >.loader .spinner { width: 50px; height: 50px; position: relative; margin: 0 auto; }
+    body > .loader .spinner:before, 
+    body > .loader .spinner:after {
       content: "";
       display: block;
       width: 100%;
@@ -93,16 +74,8 @@
       animation: bounce 2s linear infinite;
     }
 
-    .spinner:after {
-      animation-delay: -1s;
-    }
-
-    elara-app {
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+    body > .loader .spinner:after { animation-delay: -1s; }
+    elara-app { height: 100%; display: flex; align-items: center; justify-content: center; }
 
     @keyframes bounce {
       0% {

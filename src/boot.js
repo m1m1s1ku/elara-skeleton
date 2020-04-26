@@ -1,40 +1,30 @@
-/* eslint-disable @typescript-eslint/ban-ts-ignore */
-// @ts-check
-
-function makeGenericHandler(){
+function _injectLoader(){
   const handler = document.createElement('div');
-  handler.id = handler.className = 'handler';
+  handler.id = handler.className = 'loader';
   handler.innerHTML = '<div class="handler-content"><div id="spinner" class="spinner large"></div></div>';
   return handler;
 }
 
-function _onDomLoaded(){
-  const handler = makeGenericHandler();
-  document.body.appendChild(handler);
+async function _onDomLoaded(){
+  const loader = _injectLoader();
+  document.body.appendChild(loader);
 
-  const loadingPromises = [];
-  const neededElements = [];
+  // TODO : Make a race between elara-app and the loader.
 
+  // Wait for app defined in context
+  await customElements.whenDefined('elara-app');
+
+  const promises = [];
   const elara = document.querySelector('elara-app');
-  // @ts-ignore
-  loadingPromises.push(document.fonts.ready);
-  // @ts-ignore
-  loadingPromises.push(elara.bootstrap);
+  promises.push(document.fonts.ready);
+  promises.push(...elara.needed);
+  promises.push(...elara.bootstrap);
 
-  for(const elementName of neededElements){
-    loadingPromises.push(customElements.whenDefined(elementName));
-  }
+  await Promise.all(promises);
 
-  return Promise.all(loadingPromises).then(() => {    
-    window.requestAnimationFrame(() => {
-      const spinner = document.querySelector('#spinner');
-      if(spinner){
-        spinner.parentElement.removeChild(spinner);
-      }
-
-      handler.classList.add('hidden');
-      handler.parentElement.removeChild(handler);
-    });
+  window.requestAnimationFrame(() => {
+    loader.classList.add('hidden');
+    loader.parentElement.removeChild(handler);
   });
 }
 
