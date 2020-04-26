@@ -1,9 +1,11 @@
-# xxx
+# Elara Skeleton
+
+A Skeleton for doing great apps using WebComponents (LitElement based)
 
 ## Meta
 
 * **State:** WIP
-* **GitHub:** [https://github.com/ghostfly/xxx](https://github.com/ghostfly/xxx)
+* **GitHub:** [https://github.com/ghostfly/elara-skeleton](https://github.com/ghostfly/elara-skeleton)
 * **Point People:** [@ghostfly](https://github.com/ghostfly)
 
 ## License
