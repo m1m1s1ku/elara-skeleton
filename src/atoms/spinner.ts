@@ -37,7 +37,7 @@ export class ElaraSpinner extends LitElement {
           grid-auto-columns: max-content;
           grid-column-gap: 5px;
           margin: 10px;
-          margin-top: -5px;
+          margin: -4px 10px 4px;
           animation: ellipsis steps(3, end) 1.8s infinite;
           overflow: hidden;
           user-select: none;
