@@ -9,8 +9,14 @@ import './atoms/spinner';
 export class ElaraApp extends Root {
 	public static readonly is: string = 'elara-app';
 
-	public get loadables(){
+	public get loadables(): string[] {
 		return [];
+	}
+
+	public get needed(): string[] {
+		return [
+			'elara-spinner'
+		];
 	}
 
 	public render() {

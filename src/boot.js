@@ -17,8 +17,10 @@ async function _onDomLoaded(){
   const promises = [];
   const elara = document.querySelector('elara-app');
   promises.push(document.fonts.ready);
+  // Load needed
   promises.push(...elara.needed);
-  promises.push(...elara.bootstrap);
+  // Bootstrap the others
+  promises.push(elara.bootstrap);
 
   await Promise.all(promises);
 
