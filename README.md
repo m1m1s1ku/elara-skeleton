@@ -1,5 +1,4 @@
-<img src="./docs/elara.svg" style="max-width: 200px" alt="Elara logo" />
-<br>
+![Elara logo](./docs/elara.svg | width=300)
 
 # Skeleton
 
