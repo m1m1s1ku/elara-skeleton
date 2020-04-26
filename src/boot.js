@@ -1,8 +1,8 @@
 function _injectLoader(){
-  const handler = document.createElement('div');
-  handler.id = handler.className = 'loader';
-  handler.innerHTML = '<div class="handler-content"><div id="spinner" class="spinner large"></div></div>';
-  return handler;
+  const loader = document.createElement('div');
+  loader.id = loader.className = 'loader';
+  loader.innerHTML = '<div class="handler-content"><div id="spinner" class="spinner large"></div></div>';
+  return loader;
 }
 
 async function _onDomLoaded(){
@@ -26,7 +26,7 @@ async function _onDomLoaded(){
 
   window.requestAnimationFrame(() => {
     loader.classList.add('hidden');
-    loader.parentElement.removeChild(handler);
+    loader.parentElement.removeChild(loader);
   });
 }
 
