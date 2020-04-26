@@ -21,7 +21,8 @@ export class ElaraApp extends Root {
 
 	public render() {
 		return html`<div id="content" class="content-skeleton">
-			<elara-spinner text="Idée en cours"></elara-spinner></div>
+			<elara-spinner text="Idée en cours"></elara-spinner>
+		</div>
 		`;
 	}
 }
