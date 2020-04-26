@@ -35,6 +35,10 @@ export function bootstrap(loadables: string[], host: HTMLElement) {
 }
 
 export async function load(route: string, content: HTMLElement) {
+    if(!route){
+        return;
+    }
+
     const defaultTitle = 'XXX';
     const titleTemplate = '%s | ' + defaultTitle;
 
@@ -89,7 +93,7 @@ export function Router(){
                  route = routingParams.pop();
              }
  
-             const defaultRoute = 'home';
+             const defaultRoute = null;
          
               // if same has current, no.
              if(event.oldURL === event.newURL){

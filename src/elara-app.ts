@@ -2,6 +2,7 @@ import { html, customElement } from 'lit-element';
 
 import Root from './core/strategies/Root';
 
+import './atoms/not-found';
 import './atoms/spinner';
 
 @customElement('elara-app')
@@ -13,7 +14,9 @@ export class ElaraApp extends Root {
 	}
 
 	public render() {
-		return html`<div class="content-skeleton"><elara-spinner text="Idée en cours"></elara-spinner></div>`;
+		return html`<div id="content" class="content-skeleton">
+			<elara-spinner text="Idée en cours"></elara-spinner></div>
+		`;
 	}
 }
 

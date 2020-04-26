@@ -54,17 +54,6 @@ export default abstract class Root extends LitElement {
 		return bootstrap(this.loadables, this);
 	}
 
-	/**
-	 * Show a page and hide menu
-	 *
-	 * @param {string} route
-	 * @returns {Promise<void>}
-	 * @memberof Root
-	 */
-	public async show(route: string): Promise<void> {
-		this.router.navigate(route);
-	}
-
 	public connectedCallback(){
 		super.connectedCallback();
 
@@ -124,7 +113,6 @@ export default abstract class Root extends LitElement {
 		const route = this.router.hashChange(event);
 		this.route = route;
 
-		this._content.innerHTML = '';
 		await this.load(route);
 	}
 		
