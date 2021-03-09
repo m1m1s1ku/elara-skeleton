@@ -1,7 +1,14 @@
 import { LitElement } from 'lit-element';
 
+export interface PageHelmet {
+    title: string;
+    description: string;
+    type: string;
+    image: string;
+    slug: string;
+}
 export default class Page extends LitElement {
-    public get head(){
+    public get head(): PageHelmet {
         return {
             title: null,
             description: null,
@@ -11,5 +18,5 @@ export default class Page extends LitElement {
         };
     }
 
-    createRenderRoot(){ return this; }
+    createRenderRoot(): this { return this; }
 }

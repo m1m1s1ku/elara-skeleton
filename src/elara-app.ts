@@ -1,4 +1,4 @@
-import { html, customElement } from 'lit-element';
+import { html, customElement, TemplateResult } from 'lit-element';
 
 import Root from './core/strategies/Root';
 
@@ -19,7 +19,7 @@ export class ElaraApp extends Root {
 		];
 	}
 
-	public render() {
+	public render(): TemplateResult {
 		return html`<div id="content" class="content-skeleton">
 			<elara-spinner text="Idée en cours"></elara-spinner>
 		</div>

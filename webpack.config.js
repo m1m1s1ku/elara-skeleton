@@ -1,7 +1,8 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 'use strict';
 
 const { resolve, join } = require('path');
-const merge = require('webpack-merge');
+const {merge} = require('webpack-merge');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
@@ -15,40 +16,28 @@ const INDEX_TEMPLATE = resolve('./src/index.html');
 const webcomponentsjs = './node_modules/@webcomponents/webcomponentsjs';
 const webanimationsjs = './node_modules/web-animations-js';
 
-const assets = [
-  /*
-  {
-    from: resolve('./src/assets'),
-    to: resolve('dist/assets/')
-  }
-  */
-];
+const assets = [];
 
 const polyfills = [
   {
     from: resolve(`${webcomponentsjs}/webcomponents-*.js`),
-    to: join(OUTPUT_PATH, 'vendor'),
-    flatten: true
+    to: join(OUTPUT_PATH, 'vendor', '[name][ext]')
   },
   {
     from: resolve(`${webcomponentsjs}/bundles/*.js`),
-    to: join(OUTPUT_PATH, 'vendor', 'bundles'),
-    flatten: true
+    to: join(OUTPUT_PATH, 'vendor', 'bundles', '[name][ext]')
   },
   {
     from: resolve(`${webanimationsjs}/web-animations-next-lite.min.js`),
-    to: join(OUTPUT_PATH, 'vendor'),
-    flatten: true
+    to: join(OUTPUT_PATH, 'vendor', '[name][ext]')
   },
   {
     from: resolve('./src/robots.txt'),
-    to: OUTPUT_PATH,
-    flatten: true
+    to: OUTPUT_PATH
   },
   {
     from: resolve('./src/boot.js'),
-    to: OUTPUT_PATH,
-    flatten: true
+    to: OUTPUT_PATH
   }
 ];
 
@@ -87,7 +76,7 @@ const commonConfig = merge([
 const developmentConfig = merge([
   {
     plugins: [
-      new CopyWebpackPlugin(polyfills),
+      new CopyWebpackPlugin({patterns:polyfills}),
       new HtmlWebpackPlugin({
         template: INDEX_TEMPLATE
       })
@@ -109,7 +98,7 @@ const productionConfig = merge([
     devtool: 'nosources-source-map',
     plugins: [
       new CleanWebpackPlugin({ verbose: true }),
-      new CopyWebpackPlugin([...polyfills, ...assets]),
+      new CopyWebpackPlugin({patterns: [...polyfills, ...assets]}),
       new HtmlWebpackPlugin({
         template: INDEX_TEMPLATE,
         minify: {

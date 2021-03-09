@@ -1,3 +1,4 @@
+import { ElaraApp } from '../elara-app';
 import { pulseWith } from './animations';
 
 export interface UpdatableElement extends HTMLElement {
@@ -5,9 +6,9 @@ export interface UpdatableElement extends HTMLElement {
 }
 export interface LoadableElement extends UpdatableElement { loaded: boolean }
 
-export function Elara(){ return document.querySelector('elara-app'); }
+export function Elara(): ElaraApp { return document.querySelector('elara-app'); }
 
-export function bootstrap(loadables: string[], host: HTMLElement) {
+export function bootstrap(loadables: string[], host: HTMLElement): Promise<unknown[]> {
     const loadPromises = [];
     for(const element of loadables){
         const load = new Promise((resolve) => {
@@ -17,7 +18,7 @@ export function bootstrap(loadables: string[], host: HTMLElement) {
                 if(!mutation.length){ return; }
                 if (mutation[0].type == 'attributes' && mutation[0].attributeName === 'loaded') {
                     observer.disconnect();
-                    resolve();
+                    resolve(null);
                 }
             });
             observer.observe(elem, config);
@@ -28,7 +29,7 @@ export function bootstrap(loadables: string[], host: HTMLElement) {
     return Promise.all(loadPromises);
 }
 
-export async function load(route: string, content: HTMLElement) {
+export async function load(route: string, content: HTMLElement): Promise<void> {
     if(!route){
         return;
     }
@@ -67,7 +68,13 @@ export async function load(route: string, content: HTMLElement) {
     });
 }
 
-export function Router(){
+type ElaraRouter = {
+    redirect: (url: string, target?: string) => boolean;
+    navigate: (route: string) => boolean;
+    hashChange(event: HashChangeEvent): string | null;
+};
+
+export function Router(): ElaraRouter {
     return {
         redirect: (url: string, target = '_blank'): boolean => {
             return !!window.open(url, target);
