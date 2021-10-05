@@ -13,6 +13,7 @@
         "noFallthroughCasesInSwitch": true,
         "outDir": "./dist/",
         "experimentalDecorators": true,
-        "resolveJsonModule": true
+        "resolveJsonModule": true,
+        "useDefineForClassFields": false
     }
 }

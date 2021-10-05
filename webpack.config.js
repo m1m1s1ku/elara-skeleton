@@ -83,10 +83,8 @@ const developmentConfig = merge([
     ],
 
     devServer: {
-      contentBase: OUTPUT_PATH,
       compress: true,
-      overlay: true,
-      port: 3000,
+      port: 3006,
       historyApiFallback: true,
       host: 'localhost'
     }
