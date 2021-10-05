@@ -1,5 +1,6 @@
 import { ElaraApp } from '../elara-app';
 import { pulseWith } from './animations';
+import Page from './strategies/Page';
 
 export interface UpdatableElement extends HTMLElement {
     requestUpdate(name?: PropertyKey, oldValue?: unknown): Promise<unknown>;
@@ -43,8 +44,10 @@ export async function load(route: string, content: HTMLElement): Promise<void> {
     const NotFound = customElements.get('ui-not-found');
     const loaded = Component ? new Component() : new NotFound(route);
 
-    if(loaded.head && loaded.head.title){
-        document.title = titleTemplate.replace('%s', loaded.head.title);
+    const willLoad = loaded as Page;
+
+    if(willLoad.head && willLoad.head.title){
+        document.title = titleTemplate.replace('%s', willLoad.head.title);
     } else {
         document.title = defaultTitle;
     }
@@ -57,7 +60,7 @@ export async function load(route: string, content: HTMLElement): Promise<void> {
     window.scrollTo(0,0);
 
     const handle = window.requestAnimationFrame(() => {
-        const pageContent = loaded.querySelector('div');
+        const pageContent = willLoad.querySelector('div');
         if(!pageContent){
             cancelAnimationFrame(handle);
             return;
@@ -102,10 +105,10 @@ export function Router(): ElaraRouter {
              }
          
              // If loaded component has routing, let him decide
-             const current = customElements.get('ui-'+route);
-             if(current && current.hasRouting === true){
-                 return route;
-             }
+             // const current = customElements.get('ui-' + route) as typeof Page;
+             // if(current && current.hasRouting === true){
+             //    return route;
+             // }
          
              // if index asked, go to default or if nothing asked, go to default
              if(event.newURL === location.origin + location.pathname || !route){
