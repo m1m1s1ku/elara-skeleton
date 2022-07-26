@@ -1,6 +1,7 @@
-import { html, TemplateResult, css, CSSResult, property, customElement, LitElement } from 'lit-element';
+import { html, TemplateResult, css, CSSResult, LitElement } from 'lit';
+import { customElement, property } from 'lit/decorators.js';
 
-import { repeat } from 'lit-html/directives/repeat';
+import { repeat } from 'lit/directives/repeat';
 
 /**
  * @class Placeholder

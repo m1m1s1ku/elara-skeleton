@@ -1,4 +1,5 @@
-import { property, LitElement, query, TemplateResult } from 'lit-element';
+import { LitElement, TemplateResult } from 'lit';
+import { property, query } from 'lit/decorators.js';
 import { load, Router, bootstrap } from '../elara';
 
 /**

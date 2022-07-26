@@ -6,6 +6,7 @@ const {merge} = require('webpack-merge');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
+const ESLintPlugin = require('eslint-webpack-plugin');
 
 const ENV = process.argv.find(arg => arg.includes('production'))
   ? 'production'
@@ -58,16 +59,13 @@ const commonConfig = merge([
           use: ['css-loader'],
         },
         {
-          enforce: 'pre',
-          test: /\.tsx?$/,
-          loader: 'eslint-loader',
-          exclude: /node_modules/
-        },
-        {
-          test: /\.tsx?$/,
-          loader: 'ts-loader',
-          exclude: /node_modules/
-        }
+            test: /\.tsx?$/,
+            loader: 'esbuild-loader',
+            options: {
+              loader: 'ts',
+              target: 'chrome80'
+            }
+          },
       ]
     }
   }
@@ -79,7 +77,8 @@ const developmentConfig = merge([
       new CopyWebpackPlugin({patterns:polyfills}),
       new HtmlWebpackPlugin({
         template: INDEX_TEMPLATE
-      })
+      }),
+      new ESLintPlugin()
     ],
 
     devServer: {

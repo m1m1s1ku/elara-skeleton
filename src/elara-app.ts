@@ -1,4 +1,5 @@
-import { html, customElement, TemplateResult } from 'lit-element';
+import { html, TemplateResult } from 'lit';
+import { customElement } from 'lit/decorators/custom-element.js';
 
 import Root from './core/strategies/Root';
 

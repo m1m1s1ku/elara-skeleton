@@ -1,4 +1,6 @@
-import { property, css, CSSResult, customElement, html, LitElement, TemplateResult } from 'lit-element';
+import { css, CSSResult, html, LitElement, TemplateResult } from 'lit';
+import { customElement, property } from 'lit/decorators.js';
+
 import { Elara } from '../core/elara';
 
 @customElement('ui-not-found')
