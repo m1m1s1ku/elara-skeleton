@@ -1,12 +1,10 @@
-<img src="./docs/elara.svg" width="400" alt="Logo" />
-
 # Skeleton
 
 A Skeleton for doing great apps using WebComponents (LitElement based)
 
 ## Meta
 
-* **State:** WIP
+* **State:** AlwaysWIP
 * **GitHub:** [https://github.com/ghostfly/elara-skeleton](https://github.com/ghostfly/elara-skeleton)
 * **Point People:** [@ghostfly](https://github.com/ghostfly)
 
