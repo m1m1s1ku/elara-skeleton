@@ -6,7 +6,7 @@ A Skeleton for doing great apps using WebComponents (LitElement based)
 
 * **State:** AlwaysWIP
 * **GitHub:** [https://github.com/ghostfly/elara-skeleton](https://github.com/ghostfly/elara-skeleton)
-* **Point People:** [@ghostfly](https://github.com/ghostfly)
+* **Point People:** [@m1m1s1ku](https://github.com/m1m1s1ku)
 
 ## License
 
