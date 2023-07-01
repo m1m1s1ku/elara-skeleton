@@ -1,36 +1,36 @@
 {
-  "name": "xxx",
+  "name": "Elara",
   "version": "1.0.0",
-  "author": "Léonard Cherouvrier",
+  "author": "Léonard C.",
   "license": "MIT",
-  "homepage": "https://ghostfly.dev",
+  "homepage": "https://mimisiku.dev",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ghostfly/ghostfly.dev"
+    "url": "https://github.com/m1m1s1ku/mimisiku.dev"
   },
   "dependencies": {
-    "@webcomponents/webcomponentsjs": "^2.6.0",
-    "lit": "^2.2.8",
+    "@webcomponents/webcomponentsjs": "^2.8.0",
+    "lit": "^2.7.5",
     "web-animations-js": "^2.3.2"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^5.31.0",
-    "@typescript-eslint/parser": "^5.31.0",
+    "@typescript-eslint/eslint-plugin": "^5.60.1",
+    "@typescript-eslint/parser": "^5.60.1",
     "clean-webpack-plugin": "^4.0.0",
     "copy-webpack-plugin": "^11.0.0",
-    "css-loader": "^6.7.1",
-    "esbuild-loader": "^2.19.0",
-    "eslint": "^8.20.0",
-    "eslint-plugin-import": "^2.26.0",
-    "eslint-webpack-plugin": "^3.2.0",
-    "gh-pages": "^4.0.0",
-    "html-webpack-plugin": "^5.5.0",
-    "ts-loader": "^9.3.1",
-    "typescript": "^4.7.4",
-    "webpack": "^5.74.0",
-    "webpack-cli": "^4.10.0",
-    "webpack-dev-server": "^4.9.3",
-    "webpack-merge": "^5.8.0"
+    "css-loader": "^6.8.1",
+    "esbuild-loader": "^3.0.1",
+    "eslint": "^8.44.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-webpack-plugin": "^4.0.1",
+    "gh-pages": "^5.0.0",
+    "html-webpack-plugin": "^5.5.3",
+    "ts-loader": "^9.4.4",
+    "typescript": "^5.1.6",
+    "webpack": "^5.88.1",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^4.15.1",
+    "webpack-merge": "^5.9.0"
   },
   "scripts": {
     "build": "webpack --mode production",
